@@ -339,8 +339,18 @@ var sh = {
 			// carry over ID
 			if ((target.id || '') != '')
 				element.id = target.id;
-			
+
+			if( typeof jQuery !== 'undefined' ) {
+				jQuery.each( $(target).data( 'events' ), function( index, eventData ) {	
+					$(element).bind( eventData[0].type, eventData[0].handler );
+				});
+			}
+
 			target.parentNode.replaceChild(element, target);
+
+			if( typeof jQuery !== 'undefined' ) {
+				jQuery(element).trigger( 'SyntaxHighlighted' );
+			}
 		}
 	},
 
