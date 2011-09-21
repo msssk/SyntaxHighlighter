@@ -341,8 +341,8 @@ var sh = {
 				element.id = target.id;
 
 			if( typeof jQuery !== 'undefined' ) {
-				jQuery.each( $(target).data( 'events' ), function( index, eventData ) {	
-					$(element).bind( eventData[0].type, eventData[0].handler );
+				jQuery.each( jQuery(target).data( 'events' ), function( index, eventData ) {	
+					jQuery(element).bind( eventData[0].type, eventData[0].handler );
 				});
 			}
 
